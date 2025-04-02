@@ -82,11 +82,18 @@ with open("actions_log.csv", "a", newline='') as csvfile:
         pyautogui.hotkey('ctrl','z')
         pyautogui.click(5480,708)
 
+    def complete():
+        """ new function to close current page and start the next process automatically"""
+        pyautogui.hotkey('ctrl', 'w')
+        time.sleep(2)
+        both()
+
     # Listen for key commands
     keyboard.add_hotkey('[', action_one)
     keyboard.add_hotkey(']', action_two)
     keyboard.add_hotkey('v', both)
     keyboard.add_hotkey('r', undo)
+    keyboard.add_hotkey('-', complete)
 
     print("Script running... Press [ for Action One, ] for Action Two, and v for Both Actions. Press ESC to exit.")
     keyboard.wait('esc')  # Keep the script running until 'esc' is pressed
