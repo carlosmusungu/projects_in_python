@@ -93,7 +93,7 @@ with open("actions_log.csv", "a", newline='') as csvfile:
     keyboard.add_hotkey(']', action_two)
     keyboard.add_hotkey('v', both)
     keyboard.add_hotkey('r', undo)
-    keyboard.add_hotkey('-', complete)
+    keyboard.add_hotkey('.', complete)
 
     print("Script running... Press [ for Action One, ] for Action Two, and v for Both Actions. Press ESC to exit.")
     keyboard.wait('esc')  # Keep the script running until 'esc' is pressed
