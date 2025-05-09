@@ -4,6 +4,8 @@ import numpy as np
 import os
 import winsound
 import time
+#import paste_log4 as pl
+
 
 # Function to play a beep sound if an image is not found
 def play_beep():
@@ -87,7 +89,7 @@ def execute_workflow():
     if coordinates:
         pyautogui.click(click_on_center(coordinates, item_size))  # Click on the found coordinates
         print(f"Clicked on the coordinates: {coordinates}")
-        action_two()  # Run the action_two function
+        #pl.action_two()  # Run the action_two function
         #break  # End the loop after executing action_two
     else:
         play_beep()
@@ -100,4 +102,4 @@ def execute_workflow():
 
 
 
-execute_workflow()
+#execute_workflow()

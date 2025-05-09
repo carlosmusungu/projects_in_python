@@ -3,7 +3,7 @@ import keyboard
 import time
 import csv
 from datetime import datetime
-
+import image_searcher as im_s
 # Coordinates (Change these as needed)
 #CLICK1_X, CLICK1_Y = 478, 470  # First click location
 #CLICK2_X, CLICK2_Y = 252, 462  # Second click location
@@ -63,11 +63,12 @@ with open("actions_log2.csv", "a", newline='') as csvfile:
     def content():
         """Clicks at specific locations and executes content-related actions."""
         #pyautogui.click(1633, 810)
-        pyautogui.click(1526, 490)
-        time.sleep(1)
-        pyautogui.click(4823, 755)
-        time.sleep(2)
-        action_two()
+        #pyautogui.click(1526, 490)
+        #time.sleep(1)
+        #pyautogui.click(4823, 755)
+        #time.sleep(2)
+        im_s.execute_workflow()
+        #action_two()
 
     def both():
         """Executes both link and content actions."""
