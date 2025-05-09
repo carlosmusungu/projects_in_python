@@ -57,7 +57,7 @@ with open("actions_log2.csv", "a", newline='') as csvfile:
         """Clicks at the first location and copies."""
         pyautogui.click(670,92)
         #time.sleep(0.1)
-        pyautogui.hotkey('ctrl', 'c')  # Corrected to 'ctrl' from 'ctr'
+        pyautogui.hotkey('ctrl', 'c')
         action_one()
 
     def content():
@@ -67,13 +67,14 @@ with open("actions_log2.csv", "a", newline='') as csvfile:
         #time.sleep(1)
         #pyautogui.click(4823, 755)
         #time.sleep(2)
-        im_s.execute_workflow()
+        x = im_s.execute_workflow()
+        action_two() if x == 1 else None
         #action_two()
 
     def both():
         """Executes both link and content actions."""
         link()
-        time.sleep(1)
+        time.sleep(2)
         content()
 
     def undo():

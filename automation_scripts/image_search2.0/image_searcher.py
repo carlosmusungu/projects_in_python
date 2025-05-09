@@ -66,7 +66,7 @@ def execute_workflow():
     if coordinates:
         pyautogui.click(click_on_center(coordinates,item_size)) # Click on the found coordinates
         print(f"Clicked on the coordinates: {coordinates}")
-        time.sleep(2)
+        time.sleep(0.5)
     else:
         play_beep()
     
@@ -74,21 +74,25 @@ def execute_workflow():
     # Step 2: After first image is clicked, find second image and move to it
     coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\copy_image.png') or (None, None)
     if coordinates:
-        pyautogui.moveTo(click_on_center(coordinates,item_size))  # Move to the found coordinates
-        time.sleep(2)
+        time.sleep(0.5)
+        pyautogui.click(click_on_center(coordinates,item_size))  # Move to the found coordinates
+        time.sleep(0.5)
         print(f"Moved to the coordinates: {coordinates}")
+        return(1)
     else:
         play_beep()
         play_beep()
         play_beep()
         return(print("Image two not found"))
         # If not found, continue to the next image match
-
+'''
     # Step 3: After second image is found, click and run 'action_two'
     coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\copy_image_sentence.png') or (None, None)
     if coordinates:
         pyautogui.click(click_on_center(coordinates, item_size))  # Click on the found coordinates
         print(f"Clicked on the coordinates: {coordinates}")
+        time.sleep(0.5)
+        return(1)
         #pl.action_two()  # Run the action_two function
         #break  # End the loop after executing action_two
     else:
@@ -100,6 +104,6 @@ def execute_workflow():
 
     # Step 4: If none of the images were found, beep and end the loop
 
-
+'''
 
 #execute_workflow()
