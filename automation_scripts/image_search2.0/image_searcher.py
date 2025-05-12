@@ -69,6 +69,7 @@ def execute_workflow():
         time.sleep(0.5)
     else:
         play_beep()
+        time.sleep(0.5)
     
 
     # Step 2: After first image is clicked, find second image and move to it
