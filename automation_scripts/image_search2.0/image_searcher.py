@@ -69,8 +69,7 @@ def execute_workflow():
         time.sleep(0.5)
     else:
         play_beep()
-        time.sleep(0.5)
-    
+        pyautogui.click(231,88)
 
     # Step 2: After first image is clicked, find second image and move to it
     coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\copy_image.png') or (None, None)
