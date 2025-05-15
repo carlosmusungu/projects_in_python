@@ -54,7 +54,7 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
         if max_val >= threshold:  # If the match is above the threshold, consider it a valid match
-            print(f"Item found at coordinates: {max_loc}")
+            #print(f"Item found at coordinates: {max_loc}")
             return max_loc, template.shape[::-1]  # Return the top-left corner coordinates of the match
         else:
             print("Item not found on screen.")
@@ -67,7 +67,8 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
             writer.writerow([clipboard_content])
             print({clipboard_content})  # Print to console as well
 
-    # Main function to execute the sequence of image matches
+    # Main function to execute the image match
+    
     def execute_workflow():
         
         time.sleep(0.5)
@@ -75,7 +76,7 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
         coordinates, item_size = find_item_on_screen('copy_image_sentence.png') or (None, None)
         if coordinates:
             pyautogui.click(click_on_center(coordinates,item_size)) # Click on the found coordinates
-            print(f"Clicked on the coordinates: {coordinates}")
+            print(time.asctime())
             log_action("copied")
 
             #time.sleep(0.5)
