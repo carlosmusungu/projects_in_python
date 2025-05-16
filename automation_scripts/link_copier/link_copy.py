@@ -64,7 +64,7 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
     def log_action(action):
             """copies the clipboard content to a csv file"""
             clipboard_content = pyperclip.paste()
-            writer.writerow([clipboard_content])
+            writer.writerow([clipboard_content, time.asctime()])
             print({clipboard_content})  # Print to console as well
 
     # Main function to execute the image match
@@ -76,12 +76,17 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
         coordinates, item_size = find_item_on_screen('copy_image_sentence.png') or (None, None)
         if coordinates:
             pyautogui.click(click_on_center(coordinates,item_size)) # Click on the found coordinates
+            time.sleep(0.3)
+            pyautogui.hotkey('ctrl', 'w')
             print(time.asctime())
             log_action("copied")
 
             #time.sleep(0.5)
         else:
             play_beep()
+    def close_page():
+        pyautogui.hotkey('ctrl', 'w')
     
     mouse.on_button(execute_workflow, buttons=mouse.RIGHT, types=mouse.DOWN)
+    keyboard.add_hotkey('x', close_page)
     keyboard.wait('esc')
