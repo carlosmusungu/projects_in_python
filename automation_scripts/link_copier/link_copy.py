@@ -80,12 +80,14 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
             pyautogui.hotkey('ctrl', 'w')
             print(time.asctime())
             log_action("copied")
+            pyautogui.moveTo(164, 886)
 
             #time.sleep(0.5)
         else:
             play_beep()
     def close_page():
         pyautogui.hotkey('ctrl', 'w')
+        pyautogui.moveTo(164,886)
     
     def copy_link():
         pyautogui.moveTo(598,382)
