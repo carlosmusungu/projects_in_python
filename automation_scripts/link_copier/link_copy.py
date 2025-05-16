@@ -87,6 +87,11 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
     def close_page():
         pyautogui.hotkey('ctrl', 'w')
     
+    def copy_link():
+        pyautogui.moveTo(598,382)
+        mouse.click(button='right')
+    
     mouse.on_button(execute_workflow, buttons=mouse.RIGHT, types=mouse.DOWN)
     keyboard.add_hotkey('x', close_page)
+    keyboard.add_hotkey('z', copy_link)
     keyboard.wait('esc')
