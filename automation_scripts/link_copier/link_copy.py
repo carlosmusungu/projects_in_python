@@ -64,6 +64,7 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
     def log_action(action):
             """copies the clipboard content to a csv file"""
             clipboard_content = pyperclip.paste()
+            time.sleep(1)
             writer.writerow([clipboard_content, time.asctime()])
             print({clipboard_content})  # Print to console as well
 
