@@ -81,7 +81,7 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
             pyautogui.hotkey('ctrl', 'w')
             print(time.asctime())
             log_action("copied")
-            pyautogui.moveTo(164, 886)
+            pyautogui.moveTo(675, 895)
 
             #time.sleep(0.5)
         else:

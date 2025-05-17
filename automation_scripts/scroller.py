@@ -14,14 +14,24 @@ pyautogui.scroll()`**: This function simulates the scroll wheel. A negative valu
 '''
 import pyautogui
 import time
+import keyboard
 
 # Give time to focus on the browser
 time.sleep(2)
 
-pyautogui.moveTo(4033, 500)
+#pyautogui.moveTo(4033, 500) use this code to move to specific set of coordinates to do the scrolling
 
 # Scroll down multiple times
-for _ in range(700):  # Scroll 5 times
-    pyautogui.scroll(-250)  # Scroll downwards
-    time.sleep(0.5)  # Pause between scrolls
-    print(_)
+def scroll():
+    x = int(input("Enter the scroll range (~ 400 is ideal)"))
+    for _ in range(x):  # Scroll 5 times
+        pyautogui.scroll(-250)  # Scroll downwards
+        time.sleep(0.5)  # Pause between scrolls
+        print(_)
+
+
+
+scroll()
+keyboard.wait('esc')
+
+
