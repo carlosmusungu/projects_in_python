@@ -88,7 +88,7 @@ with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
             play_beep()
     def close_page():
         pyautogui.hotkey('ctrl', 'w')
-        pyautogui.moveTo(164,886)
+        pyautogui.moveTo(675, 895)
     
     def copy_link():
         pyautogui.moveTo(598,382)
