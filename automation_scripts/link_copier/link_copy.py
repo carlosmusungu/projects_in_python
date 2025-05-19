@@ -13,7 +13,7 @@ import csv
 
 
 
-with open("gen_links", mode='a', newline='', encoding='utf-8') as file:
+with open("layne_links", mode='a', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     
     # Function to play a beep sound if an image is not found
