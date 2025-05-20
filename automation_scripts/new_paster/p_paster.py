@@ -27,22 +27,29 @@ def log_event(event_msg):
 
 def capture_tm():
      # Step 1: Get timestamp lines
-    time.sleep(2)
+    #time.sleep(2)
     global timestamp_lines
     timestamp_lines = []
     timestamp_lines = pyperclip.paste().strip().splitlines()
     # Add padding lines
-    if not any(timestamp_lines):
-        raise ValueError("Clipboard does not contain timestamp lines.")
-        winsound.Beep(5000, 2000)
+    try:
+        if not any(timestamp_lines) or timestamp_lines[0].startswith("http"):
+            raise ValueError("Error with timestamp content")
+        else:
+            timestamp_lines += ["", ""]
+            return 1
+    except ValueError:
+        print('value error')
+        return 0
+    except Exception:
+        print('error')
+        return 0
     
-    else:
-        timestamp_lines += ["", ""]
         
     
-    print(timestamp_lines[-3])
-    winsound.Beep(659, 600)
-    return
+    #print(timestamp_lines[-3])
+    #winsound.Beep(659, 600)
+    
 
 def link():
     """Clicks at the first location and copies."""
@@ -60,6 +67,7 @@ def c_tab():
 def content():
     x = im_s.execute_workflow()
     capture_tm() if x == 1 else print("error copying")
+    return
 
 def caputure_l():
     link()
@@ -70,10 +78,13 @@ def caputure_l():
     try:
         if not ylink.startswith("http"):
             raise ValueError("Invalid YouTube link in clipboard.")
+    
     except ValueError as e:
         print(f"Error: {e}")
+        return 0
+    print(ylink)
     winsound.Beep(440, 600)
-    return print(ylink)
+    return 1
     
 
 
@@ -111,10 +122,18 @@ def save():
         log_event(f"Error occurred: {e}")
 
 
+def both():
+    caputure_l()
+    content()
+    y = capture_tm()
+    save() if y == 1 else (print("error saving"), winsound.Beep(8000, 400))
+
+
 # Instructions:
 print("press [ to copy the content, \n press ] to copy the link; \n press = to save, \n press ` to exit the application")
 
 # Entry point
+keyboard.add_hotkey('.', both)
 keyboard.add_hotkey('z', c_tab)
 keyboard.add_hotkey('[', content)
 keyboard.add_hotkey(']', caputure_l)
