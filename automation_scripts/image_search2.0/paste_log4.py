@@ -4,6 +4,7 @@ import time
 import csv
 from datetime import datetime
 import image_searcher as im_s
+import winsound
 # Coordinates (Change these as needed)
 #CLICK1_X, CLICK1_Y = 478, 470  # First click location
 #CLICK2_X, CLICK2_Y = 252, 462  # Second click location
@@ -32,6 +33,7 @@ with open("actions_log2.csv", "a", newline='') as csvfile:
 
     def action_two():
         """Clicks at the second location, then performs a sequence of actions."""
+        time.sleep(1) #gives time for the copy GUI to take effect
         pyautogui.click(3023, 468)
         pyautogui.hotkey('ctrl', 'v')
         time.sleep(0.4)
@@ -52,6 +54,7 @@ with open("actions_log2.csv", "a", newline='') as csvfile:
         pyautogui.hotkey('ctrl', 'up')
         log_action("Action Two Executed")  # Log the action
         pyautogui.click(274, 93)
+        winsound.Beep(440,600)
 
     def link():
         """Clicks at the first location and copies."""
