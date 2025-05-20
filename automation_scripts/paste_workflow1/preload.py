@@ -7,13 +7,13 @@ def action_one(repetitions=1):
     for _ in range(repetitions):
         # The action steps
         time.sleep(2)
-        pyautogui.hotkey('ctrl', 'r')
-        time.sleep(5)
+        #pyautogui.hotkey('ctrl', 'r')
+        time.sleep(2)
         pyautogui.hotkey('alt', 'j')
-        time.sleep(3)
-        pyautogui.click(397, 500)
+        time.sleep(5)
+        #pyautogui.click(397, 500)
         time.sleep(0.5)
-        pyautogui.click(1530, 674)
+        pyautogui.click(981, 503)
         time.sleep(3)
         #pyautogui.click(3644, -89)
         #time.sleep(5)
@@ -26,10 +26,12 @@ def invoke_action_one():
         repetitions = int(input("Enter the number of repetitions: "))
         if repetitions <= 0:
             print("Please enter a positive number.")
+            time.sleep(2)
         else:
             action_one(repetitions)
     except ValueError:
         print("Invalid input! Please enter a valid integer.")
+        
 
 keyboard.add_hotkey('1', invoke_action_one)
 

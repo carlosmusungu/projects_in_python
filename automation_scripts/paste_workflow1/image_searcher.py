@@ -62,7 +62,7 @@ def action_two():
 def execute_workflow():
         
     # Step 1: Find first image and click
-    coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\down_arrow.png') or (None, None)
+    coordinates, item_size = find_item_on_screen('C:\\Users\\User\\Desktop\\ml\\projects_in_python\\automation_scripts\\paste_workflow1\\DA.png') or (None, None)
     if coordinates:
         pyautogui.click(click_on_center(coordinates,item_size)) # Click on the found coordinates
         print(f"Clicked on the coordinates: {coordinates}")
@@ -72,11 +72,11 @@ def execute_workflow():
         pyautogui.click(231,88)
 
     # Step 2: After first image is clicked, find second image and move to it
-    coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\copy_image.png') or (None, None)
+    coordinates, item_size = find_item_on_screen('C:\\Users\\User\\Desktop\\ml\\projects_in_python\\automation_scripts\\paste_workflow1\\SI.png') or (None, None)
     if coordinates:
         time.sleep(0.5)
         pyautogui.click(click_on_center(coordinates,item_size))  # Move to the found coordinates
-        time.sleep(0.5)
+        time.sleep(1)
         print(f"Moved to the coordinates: {coordinates}")
         return(1)
     else:
