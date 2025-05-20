@@ -41,6 +41,7 @@ def capture_tm():
         
     
     print(timestamp_lines[-3])
+    winsound.Beep(659, 600)
     return
 
 def link():
@@ -49,6 +50,11 @@ def link():
     #time.sleep(0.1)
     pyautogui.hotkey('ctrl', 'c')
     time.sleep(1)
+    pyautogui.click(436, 132)
+    
+
+def c_tab():
+    pyautogui.hotkey('ctrl', 'w')
 
 
 def content():
@@ -66,7 +72,7 @@ def caputure_l():
             raise ValueError("Invalid YouTube link in clipboard.")
     except ValueError as e:
         print(f"Error: {e}")
-    
+    winsound.Beep(440, 600)
     return print(ylink)
     
 
@@ -94,9 +100,10 @@ def save():
             df_final = df_new
 
         df_final.to_csv(csv_path, index=False)
-        winsound.Beep(440, 600)
+        winsound.Beep(880, 600)
         log_event("Data appended to CSV")
         print(df_final.iloc[-3])
+        c_tab()
 
     except Exception as e:
         print(f"❌ Error: {e}")
@@ -108,6 +115,7 @@ def save():
 print("press [ to copy the content, \n press ] to copy the link; \n press = to save, \n press ` to exit the application")
 
 # Entry point
+keyboard.add_hotkey('z', c_tab)
 keyboard.add_hotkey('[', content)
 keyboard.add_hotkey(']', caputure_l)
 keyboard.add_hotkey('=', save)
