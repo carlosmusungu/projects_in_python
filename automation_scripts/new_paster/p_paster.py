@@ -1,48 +1,114 @@
 import pyperclip
 import pandas as pd
 import os
-import keyboard  # To listen for hotkeys
+import keyboard
+import winsound
+import csv
+from datetime import datetime
+import pyautogui
+import image_searcher as im_s
+import time
 
-# CSV path
+
+
 csv_path = "gen_content_cont.csv"
+log_path = "workflow_log.csv"
 
-def process_clipboard():
-    try:
-        # Step 1: Get timestamp lines
-        timestamp_lines = pyperclip.paste().strip().splitlines()
+# Ensure log file exists
+def log_event(event_msg):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(log_path, "a", newline='') as logfile:
+        writer = csv.writer(logfile)
+        if os.path.getsize(log_path) == 0:
+            writer.writerow(["Event", "Timestamp"])
+        writer.writerow([event_msg, timestamp])
+    #print(f"{event_msg} at {timestamp}")
+
+
+def capture_tm():
+     # Step 1: Get timestamp lines
+    time.sleep(2)
+    global timestamp_lines
+    timestamp_lines = []
+    timestamp_lines = pyperclip.paste().strip().splitlines()
+    # Add padding lines
+    if not any(timestamp_lines):
+        raise ValueError("Clipboard does not contain timestamp lines.")
+        winsound.Beep(5000, 2000)
+    
+    else:
         timestamp_lines += ["", ""]
+        
+    
+    print(timestamp_lines[-3])
+    return
 
-        # Step 2: Prompt to copy link
-        print("✅ Timestamps copied. Now copy the YouTube link and press Ctrl+Shift+L...")
+def link():
+    """Clicks at the first location and copies."""
+    pyautogui.click(670,92)
+    #time.sleep(0.1)
+    pyautogui.hotkey('ctrl', 'c')
+    time.sleep(1)
 
-        # Wait for link trigger
-        keyboard.wait("p")
 
-        # Step 3: Get link
-        link = pyperclip.paste().strip()
+def content():
+    x = im_s.execute_workflow()
+    capture_tm() if x == 1 else print("error copying")
 
+def caputure_l():
+    link()
+    log_event("Link captured")
+
+    global ylink
+    ylink = pyperclip.paste().strip()
+    try:
+        if not ylink.startswith("http"):
+            raise ValueError("Invalid YouTube link in clipboard.")
+    except ValueError as e:
+        print(f"Error: {e}")
+    
+    return print(ylink)
+    
+
+
+def save():
+    try:
+        #play_beep()
+        print("🔹 Copying lines from clipboard...")
+        #log_event("updating gen_csv_file")
+      
         # Step 4: Assemble data
         column_a = timestamp_lines
-        column_b = [link if i < len(column_a) - 2 else "" for i in range(len(column_a))]
+        column_b = [ylink if i < len(column_a) - 2 else "" for i in range(len(column_a))]
 
-        df = pd.DataFrame({
+        df_new = pd.DataFrame({
             "Timestamp Line": column_a,
             "YouTube Link": column_b
         })
 
-        # Step 5: Append or create
+        # Step 5: Append to CSV or create new
         if os.path.exists(csv_path):
-            existing_df = pd.read_csv(csv_path)
-            df = pd.concat([existing_df, df], ignore_index=True)
+            df_existing = pd.read_csv(csv_path)
+            df_final = pd.concat([df_existing, df_new], ignore_index=True)
+        else:
+            df_final = df_new
 
-        df.to_csv(csv_path, index=False)
-        print(f"✅ Data saved to {csv_path}\n")
+        df_final.to_csv(csv_path, index=False)
+        winsound.Beep(440, 600)
+        log_event("Data appended to CSV")
+        print(df_final.iloc[-3])
+
     except Exception as e:
         print(f"❌ Error: {e}")
+        winsound.Beep(5000, 300)
+        log_event(f"Error occurred: {e}")
 
-# Register the hotkey
-print("🔁 Script running... Press Ctrl+Shift+Y to start timestamp capture.")
-keyboard.add_hotkey("t", process_clipboard)
 
-# Keep the script alive
-keyboard.wait('esc')
+# Instructions:
+print("press [ to copy the content, \n press ] to copy the link; \n press = to save, \n press ` to exit the application")
+
+# Entry point
+keyboard.add_hotkey('[', content)
+keyboard.add_hotkey(']', caputure_l)
+keyboard.add_hotkey('=', save)
+keyboard.wait('`')
