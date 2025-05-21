@@ -11,6 +11,7 @@ import time
 
 
 
+
 csv_path = "gen_content_cont.csv"
 log_path = "workflow_log.csv"
 
@@ -27,7 +28,7 @@ def log_event(event_msg):
 
 def capture_tm():
      # Step 1: Get timestamp lines
-    #time.sleep(2)
+    #time.sleep(1)
     global timestamp_lines
     timestamp_lines = []
     timestamp_lines = pyperclip.paste().strip().splitlines()
