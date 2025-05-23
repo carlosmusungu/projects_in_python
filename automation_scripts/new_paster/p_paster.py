@@ -12,7 +12,7 @@ import time
 
 
 
-csv_path = "gen_content_cont.csv"
+csv_path = "last_elitfts.csv"
 log_path = "workflow_log.csv"
 
 # Ensure log file exists
