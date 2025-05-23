@@ -6,15 +6,15 @@ def action_one(repetitions=1):
     """Clicks at the first location and pastes, repeated a specified number of times."""
     for _ in range(repetitions):
         # The action steps
-        time.sleep(2)
-        pyautogui.hotkey('ctrl', 'r')
-        time.sleep(5)
+        time.sleep(1)
+        #pyautogui.hotkey('ctrl', 'r')
+        #time.sleep(5)
         pyautogui.hotkey('alt', 'j')
-        time.sleep(3)
+        time.sleep(4)
         pyautogui.click(397, 500)
         time.sleep(0.5)
         pyautogui.click(1530, 674)
-        time.sleep(3)
+        time.sleep(4)
         #pyautogui.click(3644, -89)
         #time.sleep(5)
         pyautogui.hotkey('ctrl', 'tab')

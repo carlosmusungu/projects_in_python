@@ -61,7 +61,7 @@ with open("actions_log2.csv", "a", newline='') as csvfile:
         pyautogui.click(670,92)
         #time.sleep(0.1)
         pyautogui.hotkey('ctrl', 'c')
-        action_one()
+        #action_one()
 
     def content():
         """Clicks at specific locations and executes content-related actions."""
@@ -71,7 +71,7 @@ with open("actions_log2.csv", "a", newline='') as csvfile:
         #pyautogui.click(4823, 755)
         #time.sleep(2)
         x = im_s.execute_workflow()
-        action_two() if x == 1 else None
+        #action_two() if x == 1 else None
         #action_two()
 
     def both():
