@@ -2,8 +2,13 @@
 ## TRANSCRIBING SCRIPT USING BROWSER'S AI EXTENSION
 
 import webbrowser
+import pyautogui
+import keyboard
 import time
 from concurrent.futures import ThreadPoolExecutor
+import image_searcher as im_s
+import preload2 as preloader
+import paste_log4 as paster
 
 
 def open_link(link):
@@ -37,16 +42,52 @@ def prep_links(source_file, dest_file, num_lines):
     # Step 4: Overwrite the source file with the remaining lines
     with open(source_file, 'w') as src:
         src.writelines(remaining_lines)
-        print(f"deleted the first {num_lines} in {source_file}")
+        print(f"deleted the first {num_lines} in {source_file} new length is {len(remaining_lines)}")
 
     #print(f"Moved {num_lines} lines from {source_file} to {dest_file}")
 
 # Usage
-source_file = 'source.txt'
-dest_file = 'links_transcribed.txt'
+source_file = 'Joe_Regan.txt'
+dest_file = 'Joe_links_transcribed.txt'
 num_lines = 10  # Number of lines to move
 
-prep_links(source_file, dest_file, num_lines)
+def work_flow():
+    coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\fresh_slate.png")
+
+    if coordinates:
+        prep_links(source_file, dest_file, num_lines)
+        time.sleep(30)
+    else:
+        
+        return print("Could not copy links")
+        
+    pyautogui.hotkey('ctrl','2')
+
+    preloader.action_one(num_lines)
+
+    pyautogui.hotkey('ctrl','2')
+
+    time.sleep(30)
+
+
+    number = 0
+    while number < num_lines:
+        preloader.both()
+        time.sleep(3)
+        number +=1
+
+
+
+    
+
+
+
+keyboard.add_hotkey('d', work_flow)
+keyboard.wait('q')
+
+
+
+#prep_links(source_file, dest_file, num_lines)
 
 
 

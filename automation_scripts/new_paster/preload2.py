@@ -1,7 +1,6 @@
 import pyautogui
 import keyboard
 import time
-import cv2
 import image_searcher as im_s
 
 def action_one(repetitions=1):
@@ -35,38 +34,34 @@ def action_one(repetitions=1):
             attempts +=1
             time.sleep(1)
             print(f"item not found retrying doing attempt {attempts}") 
-
-        ############################# DO A SECOND MATCH HERE
-        #pyautogui.hotkey('space')
+            
         time.sleep(2)
         #pyautogui.click(3644, -89)
         #time.sleep(5)
         pyautogui.hotkey('ctrl', 'tab')
-        print(f"Action One Executed ({_+1}/{repetitions})")
+        print(f"Action One Executed ({attempts}/{repetitions})")
 
 
 
 
-def find_uq():
-    coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\understanding.png") or (None, None)
-    return coordinates, item_size
+
 
     
         
-def invoke_action_one():
-    """Prompts the user for the number of repetitions and invokes action_one."""
-    try:
-        repetitions = int(input("Enter the number of repetitions: "))
-        if repetitions <= 0:
-            print("Please enter a positive number.")
-        else:
-            time.sleep(2)
-            #pyautogui.hotkey('ctrl', '2')
-            action_one(repetitions)
-    except ValueError:
-        print("Invalid input! Please enter a valid integer.")
+#def invoke_action_one():
+#    """Prompts the user for the number of repetitions and invokes action_one."""
+#    try:
+#        repetitions = int(input("Enter the number of repetitions: "))
+#        if repetitions <= 0:
+#            print("Please enter a positive number.")
+#        else:
+#            time.sleep(2)
+#            #pyautogui.hotkey('ctrl', '2')
+#            action_one(repetitions)
+#    except ValueError:
+#        print("Invalid input! Please enter a valid integer.")
 
-keyboard.add_hotkey('1', invoke_action_one)
+#keyboard.add_hotkey('1', invoke_action_one)
 
-print("Script running... Press '1' to execute actions. Press ESC to exit.")
-keyboard.wait('esc')  # Keep the script running until 'esc' is pressed
+#print("Script running... Press '1' to execute actions. Press ESC to exit.")
+#keyboard.wait('esc')  # Keep the script running until 'esc' is pressed
