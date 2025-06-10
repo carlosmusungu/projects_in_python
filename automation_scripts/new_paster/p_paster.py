@@ -12,8 +12,8 @@ import time
 
 
 
-csv_path = "last_elitfts.csv"
-log_path = "workflow_log.csv"
+csv_path = "joe_regan.csv"
+log_path = "new_workflow_log.csv"
 
 # Ensure log file exists
 def log_event(event_msg):
