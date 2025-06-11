@@ -8,7 +8,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 import image_searcher as im_s
 import preload2 as preloader
-import paste_log4 as paster
+import p_paster as paster
 
 
 def open_link(link):
@@ -52,6 +52,7 @@ dest_file = 'Joe_links_transcribed.txt'
 num_lines = 10  # Number of lines to move
 
 def work_flow():
+    time.sleep(4)
     coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\fresh_slate.png")
 
     if coordinates:
@@ -72,18 +73,31 @@ def work_flow():
 
     number = 0
     while number < num_lines:
-        preloader.both()
+        paster.both()
         time.sleep(3)
         number +=1
 
 
+def paste_only():
+    print("Initiating process b")
+    time.sleep(2)
+    number = 0
+    videos = int(input("please enter the number of videos:"))
 
+    while number < videos:
+        paster.both()
+        number +=1
+        time.sleep(3)
+        print(f"{number}/{videos} completed successfuly")
+    
+    print("Process Completed")
     
 
 
-
+keyboard.add_hotkey('b', paste_only)
 keyboard.add_hotkey('d', work_flow)
 keyboard.wait('q')
+
 
 
 

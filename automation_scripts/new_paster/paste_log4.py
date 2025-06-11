@@ -93,14 +93,15 @@ with open("actions_log2.csv", "a", newline='') as csvfile:
         time.sleep(2)
         both()
 
-    # Listen for key commands
-    keyboard.add_hotkey('[', action_one)
-    keyboard.add_hotkey(']', action_two)
-    keyboard.add_hotkey('v', both)
-    keyboard.add_hotkey('r', undo)
-    keyboard.add_hotkey('.', complete)
-    keyboard.add_hotkey('-', link)
-    keyboard.add_hotkey('=', content)
 
-    print("Script running... Press [ for Action One, ] for Action Two, and v for Both Actions. Press ` to exit.")
-    keyboard.wait('`')  # Keep the script running until 'esc' is pressed
+    # Listen for key commands
+    #keyboard.add_hotkey('[', action_one)
+    #keyboard.add_hotkey(']', action_two)
+    #keyboard.add_hotkey('v', both)
+    #keyboard.add_hotkey('r', undo)
+    #keyboard.add_hotkey('.', complete)
+    #keyboard.add_hotkey('-', link)
+    #keyboard.add_hotkey('=', content)
+
+    #print("Script running... Press [ for Action One, ] for Action Two, and v for Both Actions. Press ` to exit.")
+    #keyboard.wait('`')  # Keep the script running until 'esc' is pressed

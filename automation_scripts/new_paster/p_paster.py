@@ -131,12 +131,12 @@ def both():
 
 
 # Instructions:
-print("press [ to copy the content, \n press ] to copy the link; \n press = to save, \n press ` to exit the application")
+#print("press [ to copy the content, \n press ] to copy the link; \n press = to save, \n press ` to exit the application")
 
 # Entry point
-keyboard.add_hotkey('.', both)
-keyboard.add_hotkey('z', c_tab)
-keyboard.add_hotkey('[', content)
-keyboard.add_hotkey(']', caputure_l)
-keyboard.add_hotkey('=', save)
-keyboard.wait('`')
+#keyboard.add_hotkey('.', both)
+#keyboard.add_hotkey('z', c_tab)
+#keyboard.add_hotkey('[', content)
+#keyboard.add_hotkey(']', caputure_l)
+#keyboard.add_hotkey('=', save)
+#keyboard.wait('`')
