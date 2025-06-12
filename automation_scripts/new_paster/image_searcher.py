@@ -74,9 +74,9 @@ def execute_workflow():
     # Step 2: After first image is clicked, find second image and move to it
     coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\copy_image.png') or (None, None)
     if coordinates:
-        time.sleep(0.5)
+        time.sleep(1)
         pyautogui.click(click_on_center(coordinates,item_size))  # Move to the found coordinates
-        time.sleep(0.5)
+        time.sleep(1.5)
         print(f"Moved to the coordinates: {coordinates}")
         return(1)
     else:
