@@ -19,13 +19,13 @@ def action_one(repetitions=1):
     """Clicks at the first location and pastes, repeated a specified number of times."""
     for _ in range(repetitions):
         # The action steps
-        # time.sleep(2) now countdown
-        countdown(2)
+        time.sleep(2)
+       
         #pyautogui.hotkey('ctrl', 'r')
         #time.sleep(5)
         pyautogui.hotkey('alt', 'j')
-        #time.sleep(2) now countdown
-        countdown(2)
+        time.sleep(2)
+        
         #pyautogui.click(397, 500)
         #pyautogui.hotkey('enter') ##### DO MATCHING HERE
         coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\timestamped.png") or (None, None)
@@ -58,16 +58,16 @@ def action_one(repetitions=1):
             attempts +=1
             
 
-            #time.sleep(2) now countdown
-            countdown(2)
+            time.sleep(2)
+            
             print(f"item not found retrying doing attempt {attempts}") 
             
             # give 3 sec wait time before moving on
             if attempts ==5:
                 time.sleep(3)
 
-        #time.sleep(2) now countdown
-        countdown(2)
+        time.sleep(2)
+        #countdown(2)
         #pyautogui.click(3644, -89)
         #time.sleep(5)
         pyautogui.hotkey('ctrl', 'tab')

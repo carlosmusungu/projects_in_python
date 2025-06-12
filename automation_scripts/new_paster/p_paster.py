@@ -68,8 +68,8 @@ def link():
     pyautogui.click(670,92)
     #time.sleep(0.1)
     pyautogui.hotkey('ctrl', 'c')
-    #time.sleep(1)
-    countdown(1)
+    time.sleep(1)
+    
     pyautogui.click(436, 132)
     
 

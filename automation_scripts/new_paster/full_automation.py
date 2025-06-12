@@ -81,7 +81,8 @@ def work_flow():
 
     pyautogui.hotkey('ctrl','2')
 
-    time.sleep(30)
+    #time.sleep(30)
+    countdown(30)
 
 
     number = 0

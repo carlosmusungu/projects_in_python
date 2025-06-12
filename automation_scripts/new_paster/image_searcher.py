@@ -94,7 +94,8 @@ def execute_workflow():
     else:
         print("checking for item again after 5 seconds")
         
-        time.sleep(5)
+        #time.sleep(5)
+        countdown(5)
 
         coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\plus.png') or (None, None)
         if coordinates:
@@ -105,10 +106,17 @@ def execute_workflow():
             
             return(1)
         else:
-            print("item not found after second attempt")
-
-
-
+            print("checking again")
+            countdown(10)
+            coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\plus.png') or (None, None)
+            if coordinates:
+                time.sleep(1)
+                pyautogui.click(click_on_center(coordinates,item_size))  # Move to the found coordinates
+                time.sleep(1.5)
+                print(f"link copied successfuly")
+                return 1
+            else:
+                print("item not found after third attempt")
 
         return(print("item not found, consider checking the environment"))
         # If not found, continue to the next image match
