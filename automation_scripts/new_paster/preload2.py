@@ -3,24 +3,48 @@ import keyboard
 import time
 import image_searcher as im_s
 
+# Countdown displayer
+import sys
+
+def countdown(seconds):
+    for remaining in range(seconds, 0, -1):
+        sys.stdout.write(f"\rSleeping... {remaining} seconds remaining")
+        sys.stdout.flush()
+        time.sleep(1)
+    print("\rDone sleeping!                  ")
+
+
+
 def action_one(repetitions=1):
     """Clicks at the first location and pastes, repeated a specified number of times."""
     for _ in range(repetitions):
         # The action steps
-        time.sleep(2)
+        # time.sleep(2) now countdown
+        countdown(2)
         #pyautogui.hotkey('ctrl', 'r')
         #time.sleep(5)
         pyautogui.hotkey('alt', 'j')
-        time.sleep(2)
+        #time.sleep(2) now countdown
+        countdown(2)
         #pyautogui.click(397, 500)
         #pyautogui.hotkey('enter') ##### DO MATCHING HERE
         coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\timestamped.png") or (None, None)
         if coordinates: 
             pyautogui.click(im_s.click_on_center(coordinates, item_size))
         else:
-            print("timestamped summary option not found, trying again")
+            print("timestamped summary option not found, trying again in 2 seconds")
+            time.sleep(2)
+            coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\timestamped.png") or (None, None)
+            pyautogui.click(im_s.click_on_center(coordinates, item_size))
+
+            if coordinates:
+                print("timestamps option found, moving on")
+            else:
+                print("timestamps not found, nonetheless moving forward")
+                return
             return 
-        time.sleep(3)
+        #time.sleep(3) now countdown
+        countdown(3)
         
         #coordinates, item_size = im_s.find_item_on_screen("C:\Users\Work\Pictures\Screenshots\timestamped.png") or (None, None)
 
@@ -32,14 +56,22 @@ def action_one(repetitions=1):
                 break
 
             attempts +=1
-            time.sleep(1)
+            
+
+            #time.sleep(2) now countdown
+            countdown(2)
             print(f"item not found retrying doing attempt {attempts}") 
             
-        time.sleep(2)
+            # give 3 sec wait time before moving on
+            if attempts ==5:
+                time.sleep(3)
+
+        #time.sleep(2) now countdown
+        countdown(2)
         #pyautogui.click(3644, -89)
         #time.sleep(5)
         pyautogui.hotkey('ctrl', 'tab')
-        print(f"Action One Executed ({attempts}/{repetitions})")
+        print(f"Action One Executed ({_+1}/{repetitions})")
 
 
 

@@ -8,6 +8,17 @@ from datetime import datetime
 import pyautogui
 import image_searcher as im_s
 import time
+import sys
+
+# Countdown displayer
+
+def countdown(seconds):
+    for remaining in range(seconds, 0, -1):
+        sys.stdout.write(f"\rSleeping... {remaining} seconds remaining")
+        sys.stdout.flush()
+        time.sleep(1)
+    print("\rDone sleeping!                  ")
+
 
 
 
@@ -57,7 +68,8 @@ def link():
     pyautogui.click(670,92)
     #time.sleep(0.1)
     pyautogui.hotkey('ctrl', 'c')
-    time.sleep(1)
+    #time.sleep(1)
+    countdown(1)
     pyautogui.click(436, 132)
     
 
@@ -67,8 +79,14 @@ def c_tab():
 
 def content():
     x = im_s.execute_workflow()
-    capture_tm() if x == 1 else print("error copying")
-    return
+    
+    if x == 1:
+        capture_tm()
+    else:
+        print("error copying")
+        return 3
+    #capture_tm() if x == 1 else print("error copying")
+    return 1
 
 def caputure_l():
     link()
@@ -126,6 +144,10 @@ def save():
 def both():
     caputure_l()
     content()
+    c = content()
+    if c==3:
+        print("error copying content: the program has halted")
+        return 3
     y = capture_tm()
     save() if y == 1 else (print("error saving"), winsound.Beep(8000, 400))
 

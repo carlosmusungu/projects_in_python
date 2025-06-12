@@ -4,7 +4,18 @@ import numpy as np
 import os
 import winsound
 import time
-#import paste_log4 as pl
+#import paste_log4 as pl ## has become outdated
+import sys
+
+
+# Countdown displayer
+def countdown(seconds):
+    for remaining in range(seconds, 0, -1):
+        sys.stdout.write(f"\rSleeping... {remaining} seconds remaining")
+        sys.stdout.flush()
+        time.sleep(1)
+    print("\rDone sleeping!                  ")
+
 
 
 # Function to play a beep sound if an image is not found
@@ -56,6 +67,7 @@ def action_two():
     print("Running action_two function...")
     # Add your custom code here for the action you want to perform
     time.sleep(1)  # Simulate some action time (e.g., wait for animation or response)
+    
     print("action_two completed!")
 
 # Main function to execute the sequence of image matches
@@ -77,13 +89,28 @@ def execute_workflow():
         time.sleep(1)
         pyautogui.click(click_on_center(coordinates,item_size))  # Move to the found coordinates
         time.sleep(1.5)
-        print(f"Moved to the coordinates: {coordinates}")
+        print(f"link copied successfuly")
         return(1)
     else:
-        play_beep()
-        play_beep()
-        play_beep()
-        return(print("Image two not found"))
+        print("checking for item again after 5 seconds")
+        
+        time.sleep(5)
+
+        coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\plus.png') or (None, None)
+        if coordinates:
+            time.sleep(1)
+            pyautogui.click(click_on_center(coordinates,item_size))  # Move to the found coordinates
+            time.sleep(1.5)
+            print(f"link copied successfuly")
+            
+            return(1)
+        else:
+            print("item not found after second attempt")
+
+
+
+
+        return(print("item not found, consider checking the environment"))
         # If not found, continue to the next image match
 '''
     # Step 3: After second image is found, click and run 'action_two'

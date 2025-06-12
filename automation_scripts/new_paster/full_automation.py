@@ -10,6 +10,17 @@ import image_searcher as im_s
 import preload2 as preloader
 import p_paster as paster
 
+#sleep time displayer
+import sys
+
+def countdown(seconds):
+    for remaining in range(seconds, 0, -1):
+        sys.stdout.write(f"\rSleeping... {remaining} seconds remaining")
+        sys.stdout.flush()
+        time.sleep(1)
+    print("\rDone sleeping!                  ")
+
+
 
 def open_link(link):
     try:
@@ -52,12 +63,14 @@ dest_file = 'Joe_links_transcribed.txt'
 num_lines = 10  # Number of lines to move
 
 def work_flow():
-    time.sleep(4)
+    #time.sleep(4)
+    countdown(4)
     coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\fresh_slate.png")
 
     if coordinates:
         prep_links(source_file, dest_file, num_lines)
-        time.sleep(30)
+        countdown(30)
+        #time.sleep(30)
     else:
         
         return print("Could not copy links")
@@ -74,20 +87,35 @@ def work_flow():
     number = 0
     while number < num_lines:
         paster.both()
-        time.sleep(3)
+        x = paster.both()
+
+        if x==3:
+            print("program has stopped")
+            break
+
+        #time.sleep(3)
+        countdown(3)
         number +=1
 
 
 def paste_only():
     print("Initiating process b")
-    time.sleep(2)
+    #time.sleep(2)
+    countdown(3)
     number = 0
     videos = int(input("please enter the number of videos:"))
 
     while number < videos:
         paster.both()
+        x = paster.both()
+
+        if x==3:
+            print("program has stopped")
+            break
+
         number +=1
-        time.sleep(3)
+        #time.sleep(3)
+        countdown(3)
         print(f"{number}/{videos} completed successfuly")
     
     print("Process Completed")
