@@ -62,7 +62,7 @@ def action_two():
 def execute_workflow():
         
     # Step 1: Find first image and click
-    coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\down_arrow.png') or (None, None)
+    coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\plus.png') or (None, None)
     if coordinates:
         pyautogui.click(click_on_center(coordinates,item_size)) # Click on the found coordinates
         print(f"Clicked on the coordinates: {coordinates}")
