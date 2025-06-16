@@ -129,17 +129,22 @@ def paste_only():
 def large_scale_paster():
 
     x = 1
-
-    while x <= 10:
-        print(f"large_Scale {1}")
+    vids = int(input("Enter the batch number in multiples of 10"))
+    while x <= vids:
+        print(f"large_Scale {x}")
         y = work_flow()
 
         if y == 1:
-            print(f"Proceeding to the next batch of {num_lines}")
+            print(f"Proceeding to the next batch of {num_lines} batch number {x+1}/{vids}")
             countdown(5)
+            x+=1
         else:
             print("Batches stopped")
-            break
+            return
+        
+    return print("Completed: \n Ready for the next Batch")    
+    
+            
 
 
 
