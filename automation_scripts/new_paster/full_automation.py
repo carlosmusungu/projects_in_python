@@ -43,7 +43,7 @@ def prep_links(source_file, dest_file, num_lines):
 
     with ThreadPoolExecutor() as executor:
         executor.map(open_link, [link.strip() for link in working_lines])
-        print(f"opened links {working_lines}")
+        print("completed")
 
     # Step 3: Write the selected lines to the destination file
     with open(dest_file, 'a') as dest:  # 'a' to append to the file if it exists
@@ -71,32 +71,36 @@ def work_flow():
         prep_links(source_file, dest_file, num_lines)
         countdown(30)
         #time.sleep(30)
+        pyautogui.hotkey('ctrl','2')
+
+        preloader.action_one(num_lines)
+
+        pyautogui.hotkey('ctrl','2')
+
+        #time.sleep(30)
+        countdown(30)
+
+
+        number = 0
+        while number < num_lines:
+            #paster.both()
+            x = paster.both()
+
+            if x==3:
+                print("program has stopped")
+                return 0
+
+            #time.sleep(3)
+            countdown(3)
+            number +=1
+            print("done") if number == num_lines else print(f"pasting {number+1}/{num_lines}")
+
+        return 1
     else:
+        print("Could not copy links")
+        return 0 
         
-        return print("Could not copy links")
-        
-    pyautogui.hotkey('ctrl','2')
-
-    preloader.action_one(num_lines)
-
-    pyautogui.hotkey('ctrl','2')
-
-    #time.sleep(30)
-    countdown(30)
-
-
-    number = 0
-    while number < num_lines:
-        paster.both()
-        x = paster.both()
-
-        if x==3:
-            print("program has stopped")
-            break
-
-        #time.sleep(3)
-        countdown(3)
-        number +=1
+    
 
 
 def paste_only():
@@ -107,7 +111,7 @@ def paste_only():
     videos = int(input("please enter the number of videos:"))
 
     while number < videos:
-        paster.both()
+        #paster.both()
         x = paster.both()
 
         if x==3:
@@ -122,7 +126,27 @@ def paste_only():
     print("Process Completed")
     
 
+def large_scale_paster():
 
+    x = 1
+
+    while x <= 10:
+        print(f"large_Scale {1}")
+        y = work_flow()
+
+        if y == 1:
+            print(f"Proceeding to the next batch of {num_lines}")
+            countdown(5)
+        else:
+            print("Batches stopped")
+            break
+
+
+
+
+
+
+keyboard.add_hotkey('l', large_scale_paster)
 keyboard.add_hotkey('b', paste_only)
 keyboard.add_hotkey('d', work_flow)
 keyboard.wait('q')

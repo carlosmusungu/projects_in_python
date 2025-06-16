@@ -19,6 +19,8 @@ def action_one(repetitions=1):
     """Clicks at the first location and pastes, repeated a specified number of times."""
     for _ in range(repetitions):
         # The action steps
+
+        print(f"link {_+1}")
         time.sleep(2)
        
         #pyautogui.hotkey('ctrl', 'r')
@@ -35,9 +37,9 @@ def action_one(repetitions=1):
             print("timestamped summary option not found, trying again in 2 seconds")
             time.sleep(2)
             coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\timestamped.png") or (None, None)
-            pyautogui.click(im_s.click_on_center(coordinates, item_size))
 
             if coordinates:
+                pyautogui.click(im_s.click_on_center(coordinates, item_size))
                 print("timestamps option found, moving on")
             else:
                 print("timestamps not found, nonetheless moving forward")
@@ -58,19 +60,22 @@ def action_one(repetitions=1):
             attempts +=1
             
 
-            time.sleep(2)
+            time.sleep(4)
             
-            print(f"item not found retrying doing attempt {attempts}") 
+            print(f"item not found trying again: attempt {attempts}") 
             
             # give 3 sec wait time before moving on
             if attempts ==5:
                 time.sleep(3)
+
+                print("last precautionary time for loading")
 
         time.sleep(2)
         #countdown(2)
         #pyautogui.click(3644, -89)
         #time.sleep(5)
         pyautogui.hotkey('ctrl', 'tab')
+        print("tab moved")
         print(f"Action One Executed ({_+1}/{repetitions})")
 
 
