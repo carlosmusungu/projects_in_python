@@ -23,7 +23,7 @@ def countdown(seconds):
 
 
 
-csv_path = "joe_regan.csv"
+csv_path = "new_excel.csv"
 log_path = "new_workflow_log.csv"
 
 # Ensure log file exists
