@@ -17,7 +17,7 @@ def countdown(seconds):
         sys.stdout.write(f"\rSleeping... {remaining} seconds remaining")
         sys.stdout.flush()
         time.sleep(1)
-    print("\rDone sleeping!                  ")
+    #print("\rDone sleeping!                  ")
 
 
 
@@ -51,10 +51,10 @@ def capture_tm():
             timestamp_lines += ["", ""]
             return 1
     except ValueError:
-        print('value error')
+        #print('value error')
         return 0
     except Exception:
-        print('error')
+        #print('error')
         return 0
     
         
@@ -83,7 +83,7 @@ def content():
     if x == 1:
         capture_tm()
     else:
-        print("error copying")
+        #print("error copying")
         return 3
     #capture_tm() if x == 1 else print("error copying")
     return 1
@@ -99,7 +99,7 @@ def caputure_l():
             raise ValueError("Invalid YouTube link in clipboard.")
     
     except ValueError as e:
-        print(f"Error: {e}")
+        #print(f"Error: {e}")
         return 0
     print(ylink)
     winsound.Beep(440, 600)
@@ -110,7 +110,7 @@ def caputure_l():
 def save():
     try:
         #play_beep()
-        print("🔹 Copying lines from clipboard...")
+        print("🔹 Saving Content ...")
         #log_event("updating gen_csv_file")
       
         # Step 4: Assemble data
@@ -132,11 +132,11 @@ def save():
         df_final.to_csv(csv_path, index=False)
         winsound.Beep(880, 600)
         log_event("Data appended to CSV")
-        print(df_final.iloc[-3])
+        #print(df_final.iloc[-3])
         c_tab()
 
     except Exception as e:
-        print(f"❌ Error: {e}")
+        #print(f"❌ Error: {e}")
         winsound.Beep(5000, 300)
         log_event(f"Error occurred: {e}")
 

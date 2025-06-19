@@ -18,14 +18,14 @@ def countdown(seconds):
         sys.stdout.write(f"\rSleeping... {remaining} seconds remaining")
         sys.stdout.flush()
         time.sleep(1)
-    print("\rDone sleeping!                  ")
+    #print("\rDone sleeping!                  ")
 
 
 
 def open_link(link):
     try:
         if link:
-            print(f"Opening: {link}")
+            #print(f"Opening: {link}")
             webbrowser.open(link)
     except Exception as e:
         print(f"Error opening {link}: {e}")
@@ -43,17 +43,17 @@ def prep_links(source_file, dest_file, num_lines):
 
     with ThreadPoolExecutor() as executor:
         executor.map(open_link, [link.strip() for link in working_lines])
-        print("completed")
+        #print("completed")
 
     # Step 3: Write the selected lines to the destination file
     with open(dest_file, 'a') as dest:  # 'a' to append to the file if it exists
         dest.writelines(working_lines)
-        print("updated links worked on")
+        #print("updated links worked on")
 
     # Step 4: Overwrite the source file with the remaining lines
     with open(source_file, 'w') as src:
         src.writelines(remaining_lines)
-        print(f"deleted the first {num_lines} in {source_file} new length is {len(remaining_lines)}")
+        print(f"deleted the first {num_lines} in {source_file} new length is 🔹🔹 {len(remaining_lines)}🔹🔹")
 
     #print(f"Moved {num_lines} lines from {source_file} to {dest_file}")
 
@@ -104,11 +104,11 @@ def work_flow():
 
 
 def paste_only():
-    print("Initiating process b")
+    #print("Initiating process b")
     #time.sleep(2)
     countdown(3)
     number = 0
-    videos = int(input("please enter the number of videos:"))
+    videos = int(input("\r please enter the number of videos:"))
 
     while number < videos:
         #paster.both()
@@ -129,9 +129,9 @@ def paste_only():
 def large_scale_paster():
 
     x = 1
-    vids = int(input("Enter the batch number in multiples of 10"))
+    vids = int(input("Enter the batches to be done: \n"))
     while x <= vids:
-        print(f"large_Scale {x}")
+        print(f"Batch number {x}")
         y = work_flow()
 
         if y == 1:

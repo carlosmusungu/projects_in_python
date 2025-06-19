@@ -9,12 +9,12 @@ import sys
 
 
 # Countdown displayer
-def countdown(seconds):
+def countdown(seconds, message):
     for remaining in range(seconds, 0, -1):
-        sys.stdout.write(f"\rSleeping... {remaining} seconds remaining")
+        sys.stdout.write(f"\r {message}: {remaining} remaining")
         sys.stdout.flush()
         time.sleep(1)
-    print("\rDone sleeping!                  ")
+    
 
 
 
@@ -34,7 +34,7 @@ def click_on_center(coordinates, item_size):
 # Function to find the image on the screen and return coordinates
 def find_item_on_screen(image_path, threshold=0.8):
     if not os.path.exists(image_path):
-        print(f"Error: The file {image_path} does not exist!")
+        #print(f"Error: The file {image_path} does not exist!")
         return None
 
     # Take a screenshot
@@ -56,19 +56,19 @@ def find_item_on_screen(image_path, threshold=0.8):
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
     if max_val >= threshold:  # If the match is above the threshold, consider it a valid match
-        print(f"Item found at coordinates: {max_loc}")
+        #print(f"Item found at coordinates: {max_loc}")
         return max_loc, template.shape[::-1]  # Return the top-left corner coordinates of the match
     else:
-        print("Item not found on screen.")
+        #print("Item not found on screen.")
         return None  # No match found
 
 # Function to perform a second action (custom function you can define)
 def action_two():
-    print("Running action_two function...")
+    #print("Running action_two function...")
     # Add your custom code here for the action you want to perform
     time.sleep(1)  # Simulate some action time (e.g., wait for animation or response)
     
-    print("action_two completed!")
+    #print("action_two completed!")
 
 # Main function to execute the sequence of image matches
 def execute_workflow():
@@ -77,7 +77,7 @@ def execute_workflow():
     coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\plus.png') or (None, None)
     if coordinates:
         pyautogui.click(click_on_center(coordinates,item_size)) # Click on the found coordinates
-        print(f"Clicked on the coordinates: {coordinates}")
+        #print(f"Clicked on the coordinates: {coordinates}")
         time.sleep(0.5)
     else:
         play_beep()
@@ -89,13 +89,13 @@ def execute_workflow():
         time.sleep(1)
         pyautogui.click(click_on_center(coordinates,item_size))  # Move to the found coordinates
         time.sleep(1.5)
-        print(f"link copied successfuly")
+        #print(f"link copied successfuly")
         return(1)
     else:
-        print("checking for item again after 5 seconds")
+        yu = "checking for item again"
         
         #time.sleep(5)
-        countdown(5)
+        countdown(5,yu)
 
         coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\plus.png') or (None, None)
         if coordinates:
@@ -106,19 +106,21 @@ def execute_workflow():
             
             return(1)
         else:
-            print("checking again")
-            countdown(10)
+            x = "checking again"
+            countdown(10, yu)
             coordinates, item_size = find_item_on_screen('C:\\Users\\Work\\Desktop\\plus.png') or (None, None)
             if coordinates:
                 time.sleep(1)
                 pyautogui.click(click_on_center(coordinates,item_size))  # Move to the found coordinates
                 time.sleep(1.5)
-                print(f"link copied successfuly")
+                #print(f"link copied successfuly")
                 return 1
-            else:
-                print("item not found after third attempt")
+            #else:
+                #print("item not found after third attempt")
 
-        return(print("item not found, consider checking the environment"))
+
+
+        #return(print("item not found, consider checking the environment"))
         # If not found, continue to the next image match
 '''
     # Step 3: After second image is found, click and run 'action_two'
@@ -140,5 +142,7 @@ def execute_workflow():
     # Step 4: If none of the images were found, beep and end the loop
 
 '''
+
+
 
 #execute_workflow()
