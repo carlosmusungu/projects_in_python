@@ -121,28 +121,28 @@ def paste_only():
         number +=1
         #time.sleep(3)
         countdown(3)
-        print(f"{number}/{videos} completed successfuly")
+        print(f"\r{number}/{videos} completed successfuly")
     
-    print("Process Completed")
+    print("\rProcess Completed")
     
 
 def large_scale_paster():
 
     x = 1
-    vids = int(input("Enter the batches to be done: \n"))
+    vids = int(input("\rEnter the batches to be done: \n"))
     while x <= vids:
-        print(f"Batch number {x}")
+        print(f"\rBatch number {x}")
         y = work_flow()
 
         if y == 1:
-            print(f"Proceeding to the next batch of {num_lines} batch number {x+1}/{vids}")
+            print(f"\rProceeding to the next batch of {num_lines} batch number {x+1}/{vids}")
             countdown(5)
             x+=1
         else:
-            print("Batches stopped")
+            print("\rBatches stopped")
             return
         
-    return print("Completed: \n Ready for the next Batch")    
+    return print("\rCompleted: \n Ready for the next Batch")    
     
             
 

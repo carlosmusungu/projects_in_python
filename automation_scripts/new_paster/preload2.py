@@ -11,7 +11,7 @@ def countdown(seconds):
         sys.stdout.write(f"\rSleeping... {remaining} seconds remaining")
         sys.stdout.flush()
         time.sleep(1)
-    print("\rDone sleeping!                  ")
+    #print("\rDone sleeping!                  ")
 
 
 
@@ -20,7 +20,7 @@ def action_one(repetitions=1):
     for _ in range(repetitions):
         # The action steps
 
-        print(f"link {_+1}")
+        #print(f"link {_+1}")
         time.sleep(2)
        
         #pyautogui.hotkey('ctrl', 'r')
@@ -34,16 +34,16 @@ def action_one(repetitions=1):
         if coordinates: 
             pyautogui.click(im_s.click_on_center(coordinates, item_size))
         else:
-            print("timestamped summary option not found, trying again in 2 seconds")
+            #print("timestamped summary option not found, trying again in 2 seconds")
             time.sleep(2)
             coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\timestamped.png") or (None, None)
 
             if coordinates:
                 pyautogui.click(im_s.click_on_center(coordinates, item_size))
-                print("timestamps option found, moving on")
-            else:
-                print("timestamps not found, nonetheless moving forward")
-                return
+                #print("timestamps option found, moving on")
+            #else:
+                #print("timestamps not found, nonetheless moving forward")
+                #return
             return 
         #time.sleep(3) now countdown
         countdown(3)
@@ -54,7 +54,7 @@ def action_one(repetitions=1):
         while attempts < 5:
             coordinates, item_size = coordinates, item_size = im_s.find_item_on_screen("C:\\Users\\Work\\Pictures\\Screenshots\\understanding.png") or (None, None)
             if coordinates:
-                print("Ai ready proceeeding to next tab")
+                #print("Ai ready proceeeding to next tab")
                 break
 
             attempts +=1
@@ -62,21 +62,21 @@ def action_one(repetitions=1):
 
             time.sleep(4)
             
-            print(f"item not found trying again: attempt {attempts}") 
+            #print(f"item not found trying again: attempt {attempts}") 
             
             # give 3 sec wait time before moving on
             if attempts ==5:
                 time.sleep(3)
 
-                print("last precautionary time for loading")
+                #print("last precautionary time for loading")
 
         time.sleep(2)
         #countdown(2)
         #pyautogui.click(3644, -89)
         #time.sleep(5)
         pyautogui.hotkey('ctrl', 'tab')
-        print("tab moved")
-        print(f"Action One Executed ({_+1}/{repetitions})")
+        #print("tab moved")
+        #print(f"Action One Executed ({_+1}/{repetitions})")
 
 
 

@@ -101,7 +101,7 @@ def caputure_l():
     except ValueError as e:
         #print(f"Error: {e}")
         return 0
-    print(ylink)
+    #print(ylink)
     winsound.Beep(440, 600)
     return 1
     
