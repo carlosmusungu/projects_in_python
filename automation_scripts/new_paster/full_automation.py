@@ -58,9 +58,9 @@ def prep_links(source_file, dest_file, num_lines):
     #print(f"Moved {num_lines} lines from {source_file} to {dest_file}")
 
 # Usage
-source_file = 'new_excel.txt'
+source_file = 'remainder_excel.txt'
 dest_file = 'excel_links_transcribed.txt'
-num_lines = 10  # Number of lines to move
+num_lines = 15  # Number of lines to move
 
 def work_flow():
     #time.sleep(4)
