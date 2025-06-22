@@ -60,7 +60,7 @@ def prep_links(source_file, dest_file, num_lines):
 # Usage
 source_file = 'new_excel.txt'
 dest_file = 'excel_links_transcribed.txt'
-num_lines = 10  # Number of lines to move
+num_lines = 15  # Number of lines to move
 
 def work_flow():
     #time.sleep(4)
@@ -131,11 +131,15 @@ def large_scale_paster():
     x = 1
     vids = int(input("\rEnter the batches to be done: \n"))
     while x <= vids:
+        s_time = time.time()
         print(f"\rBatch number {x}")
         y = work_flow()
-
+        
         if y == 1:
             print(f"\rProceeding to the next batch of {num_lines} batch number {x+1}/{vids}")
+            dur = s_time - time.time()
+            print(f"\r time take in sec{round(dur)} seconds:")
+            print(f"\r {round(dur/60)} minutes")
             countdown(5)
             x+=1
         else:
