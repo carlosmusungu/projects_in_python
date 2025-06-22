@@ -60,7 +60,7 @@ def prep_links(source_file, dest_file, num_lines):
 # Usage
 source_file = 'new_excel.txt'
 dest_file = 'excel_links_transcribed.txt'
-num_lines = 15  # Number of lines to move
+num_lines = 10  # Number of lines to move
 
 def work_flow():
     #time.sleep(4)
@@ -72,6 +72,7 @@ def work_flow():
         countdown(30)
         #time.sleep(30)
         pyautogui.hotkey('ctrl','2')
+        time.sleep(5)
 
         preloader.action_one(num_lines)
 
@@ -147,6 +148,14 @@ def large_scale_paster():
             return
         
     return print("\rCompleted: \n Ready for the next Batch")    
+
+def preloading():
+    reps = int(input('Enter the numbe of tabs to be loaded: \n'))
+    countdown(5)
+    
+    preloader.action_one(reps)
+   
+
     
             
 
@@ -154,7 +163,7 @@ def large_scale_paster():
 
 
 
-
+keyboard.add_hotkey('p', preloading)
 keyboard.add_hotkey('l', large_scale_paster)
 keyboard.add_hotkey('b', paste_only)
 keyboard.add_hotkey('d', work_flow)
